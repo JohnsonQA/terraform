@@ -2,7 +2,7 @@ resource "aws_instance" "roboshop"{
     count = 3
     ami             = var.ami_id
     instance_type   = var.environment == "dev" ? "t3.micro" : "t3.small"
-    vpc_security_group_ids= [aws_security_group.allow_all.id]
+    vpc_security_group_ids= [aws_security_group.allow_all.id]  #here id is an attribute that comes from terraform resource output definition
 
     tags = {
      Name = var.instances[count.index]
