@@ -28,6 +28,11 @@ resource "aws_security_group" "allow_all" {
         ipv6_cidr_blocks = ["::/0"]
     }
 
+    #Using lifecycle it will create new resource and associate with dependant r4esource. Here ec2 and then detsroy the old one  
+    lifecycle {
+        create_before_destroy = true
+    }
+
     tags = {
         Name = "allow-all"
     }
